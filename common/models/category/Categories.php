@@ -15,6 +15,18 @@ use Yii;
  */
 class Categories extends \yii\db\ActiveRecord
 {
+
+    const SCENARIO_DEFAULT =  'default';
+    const SCENARIO_CREATE =  'create';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['name'];
+        $scenarios[self::SCENARIO_CREATE] = ['name', 'tr_name'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */

@@ -41,6 +41,17 @@ class Shops extends ActiveRecord
     const UNPUBLISHED = 0;
     public $img_logo;
 
+    const SCENARIO_DEFAULT =  'default';
+    const SCENARIO_CREATE =  'create';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['name', 'phone', 'email', 'description', 'index'];
+        $scenarios[self::SCENARIO_CREATE] = ['name', 'phone', 'email', 'id_country', 'id_region', 'id_city', 'description', 'index'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */

@@ -17,6 +17,18 @@ use Yii;
  */
 class StatisticMenu extends \yii\db\ActiveRecord
 {
+
+    const SCENARIO_DEFAULT =  'default';
+    const SCENARIO_CREATE =  'create';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['count_comm', 'count_order'];
+        $scenarios[self::SCENARIO_CREATE] = ['id_menu', 'count_comm', 'count_order'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */

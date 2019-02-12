@@ -18,12 +18,23 @@ use yii\helpers\HtmlPurifier;
  */
 class Pages extends ActiveRecord
 {
+    const SCENARIO_DEFAULT =  'default';
+    const SCENARIO_CREATE =  'create';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['name', 'text'];
+        $scenarios[self::SCENARIO_CREATE] = ['name', 'text', 'tr_name'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'borz_pages';
+        return '{{%pages}}';
     }
 
     /**

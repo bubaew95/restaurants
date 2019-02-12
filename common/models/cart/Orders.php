@@ -30,6 +30,18 @@ class Orders extends \yii\db\ActiveRecord
     public $allprice;
     public $address;
 
+    const SCENARIO_DEFAULT =  'default';
+    const SCENARIO_CREATE =  'create';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['id_delivery'];
+        $scenarios[self::SCENARIO_CREATE] = ['id_menu', 'id_delivery', 'id_address_delivery', 'qty', 'id_shop', 'id_status', 'id_transport', 'id_user'];
+        return $scenarios;
+    }
+
+
     /**
      * {@inheritdoc}
      */

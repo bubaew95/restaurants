@@ -25,6 +25,17 @@ use yii\db\ActiveRecord;
  */
 class Cart extends yii\db\ActiveRecord
 {
+    const SCENARIO_DEFAULT =  'default';
+    const SCENARIO_CREATE =  'create';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['total_sum', 'total_qty'];
+        $scenarios[self::SCENARIO_CREATE] = ['total_qty', 'id_user', 'id_manager', 'id_tranpor', 'id_status'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */

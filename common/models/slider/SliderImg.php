@@ -15,7 +15,7 @@ use Yii;
  */
 class SliderImg extends \yii\db\ActiveRecord
 {
-
+    const SCENARIO_DEFAULT =  'default';
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
     public $img;
@@ -31,6 +31,7 @@ class SliderImg extends \yii\db\ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_CREATE] = ['image'];
         $scenarios[self::SCENARIO_CREATE] = ['image', 'id_shop'];
         $scenarios[self::SCENARIO_UPDATE] = ['id_shop'];
         return $scenarios;

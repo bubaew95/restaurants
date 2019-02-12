@@ -15,6 +15,15 @@ use Yii;
  */
 class Delivery extends \yii\db\ActiveRecord
 {
+    const SCENARIO_DEFAULT =  'default';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['name'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */

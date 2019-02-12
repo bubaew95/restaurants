@@ -22,6 +22,18 @@ use Yii;
  */
 class UserData extends \yii\db\ActiveRecord
 {
+
+    const SCENARIO_DEFAULT =  'default';
+    const SCENARIO_CREATE =  'create';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['fio', 'phone', 'birthday'];
+        $scenarios[self::SCENARIO_CREATE] = ['fio', 'id_user', 'phone', 'ip_address', 'birthday'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */

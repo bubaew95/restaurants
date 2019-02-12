@@ -29,6 +29,7 @@ class Menu extends ActiveRecord
 {
     public $imgFile;
 
+    const SCENARIO_DEFAULT =  'default';
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
 
@@ -64,6 +65,7 @@ class Menu extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['name', 'img', 'price', 'desc'];
         $scenarios[self::SCENARIO_CREATE] = ['name', 'id_shop', 'img', 'id_cat', 'price', 'desc'];
         $scenarios[self::SCENARIO_UPDATE] = ['name', 'id_shop', 'id_cat', 'price', 'desc'];
         return $scenarios;

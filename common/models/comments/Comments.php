@@ -17,6 +17,16 @@ use yii\db\ActiveRecord;
  */
 class Comments extends ActiveRecord
 {
+
+    const SCENARIO_DEFAULT =  'default';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['id_user', 'id_menu'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */

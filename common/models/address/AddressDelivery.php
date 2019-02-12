@@ -22,6 +22,16 @@ use Yii;
  */
 class AddressDelivery extends \yii\db\ActiveRecord
 {
+
+    const SCENARIO_DEFAULT =  'default';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['id_user', 'id_country', 'id_region', 'id_city', 'address'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */

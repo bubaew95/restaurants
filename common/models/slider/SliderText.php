@@ -29,6 +29,17 @@ use Yii;
  */
 class SliderText extends \yii\db\ActiveRecord
 {
+    const SCENARIO_DEFAULT =  'default';
+    const SCENARIO_CREATE =  'create';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['blob', 'style', 'type', 'classes'];
+        $scenarios[self::SCENARIO_CREATE] = ['id_slider', 'type', 'data_x', 'data_y', 'data_start', 'data_speed', 'data_endspeed'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */

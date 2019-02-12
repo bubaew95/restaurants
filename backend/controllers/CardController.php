@@ -5,7 +5,7 @@ namespace backend\controllers;
 use backend\models\search\SearchOrders;
 use common\component\Constatnts;
 use Yii;
-use common\models\Cart;
+use common\models\cart\Cart;
 use backend\models\search\SearchCart;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -83,6 +83,7 @@ class CardController extends Controller
     public function actionCreate()
     {
         $model = new Cart();
+        $model->scenario = Cart::SCENARIO_CREATE;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

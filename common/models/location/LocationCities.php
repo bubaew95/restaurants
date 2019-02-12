@@ -16,6 +16,17 @@ use Yii;
  */
 class LocationCities extends \yii\db\ActiveRecord
 {
+    const SCENARIO_DEFAULT =  'default';
+    const SCENARIO_CREATE =  'create';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['name'];
+        $scenarios[self::SCENARIO_CREATE] = ['id_region', 'name'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */

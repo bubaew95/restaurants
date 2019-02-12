@@ -18,6 +18,17 @@ use Yii;
  */
 class Composition extends \yii\db\ActiveRecord
 {
+    const SCENARIO_DEFAULT =  'default';
+    const SCENARIO_CREATE =  'create';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_DEFAULT] = ['key', 'value'];
+        $scenarios[self::SCENARIO_CREATE] = ['key', 'value', 'id_menu'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */
